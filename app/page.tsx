@@ -77,6 +77,21 @@ export default function Home() {
     }
   };
 
+  const detectSpecialNumberForPeak34 = (number: number) => {
+    if (
+      number === 10 ||
+      number === 13 ||
+      number === 14 ||
+      number === 16 ||
+      number === 19 ||
+      number === 11 ||
+      number === 22 ||
+      number === 33
+    ) {
+      return true;
+    }
+  };
+
   let year = "";
   let month = "";
   let date = "";
@@ -88,8 +103,6 @@ export default function Home() {
     setChiSoDamMeTiemAn([]);
     setChiSoNguyenAmDauTrongTen(0);
     setChiSoBanTheTiemThuc(0);
-
-    console.log("click");
 
     // const fullName = document.getElementById("txtFullName") as HTMLInputElement;
     // const dob = document.getElementById("txtDoB") as HTMLInputElement;
@@ -346,32 +359,46 @@ export default function Home() {
             </tr>
             <tr>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {chiSoNoiTam}
-                {chiSoNoiTam > 9 ? "/" + convertInto1Digit(chiSoNoiTam) : null}
+                {chiSoNoiTam <= 9
+                  ? chiSoNoiTam
+                  : chiSoNoiTam > 9 && detectSpecialNumber(chiSoNoiTam)
+                  ? chiSoNoiTam + "/" + convertInto1Digit(chiSoNoiTam)
+                  : convertInto1Digit(chiSoNoiTam)}
               </td>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {chiSoTinhCach}
-                {chiSoTinhCach > 9
-                  ? "/" + convertInto1Digit(chiSoTinhCach)
-                  : null}
+                {chiSoTinhCach <= 9
+                  ? chiSoTinhCach
+                  : chiSoTinhCach > 9 && detectSpecialNumber(chiSoTinhCach)
+                  ? chiSoTinhCach + "/" + convertInto1Digit(chiSoTinhCach)
+                  : convertInto1Digit(chiSoTinhCach)}
               </td>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {chiSoSuMenh}
-                {chiSoSuMenh > 9 ? "/" + convertInto1Digit(chiSoSuMenh) : null}
+                {chiSoSuMenh <= 9
+                  ? chiSoSuMenh
+                  : chiSoSuMenh > 9 && detectSpecialNumber(chiSoSuMenh)
+                  ? chiSoSuMenh + "/" + convertInto1Digit(chiSoSuMenh)
+                  : convertInto1Digit(chiSoSuMenh)}
               </td>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {ngaySinh1So}
-                {ngaySinh1So > 9 ? "/" + convertInto1Digit(ngaySinh1So) : null}
+                {ngaySinh1So <= 9
+                  ? ngaySinh1So
+                  : ngaySinh1So > 9 && detectSpecialNumber(ngaySinh1So)
+                  ? ngaySinh1So + "/" + convertInto1Digit(ngaySinh1So)
+                  : convertInto1Digit(ngaySinh1So)}
               </td>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {chiSoDuongDoi}
-                {chiSoDuongDoi > 9
-                  ? "/" + convertInto1Digit(chiSoDuongDoi)
-                  : null}
+                {chiSoDuongDoi <= 9
+                  ? chiSoDuongDoi
+                  : chiSoDuongDoi > 9 && detectSpecialNumber(chiSoDuongDoi)
+                  ? chiSoDuongDoi + "/" + convertInto1Digit(chiSoDuongDoi)
+                  : convertInto1Digit(chiSoDuongDoi)}
               </td>
               <td className="border-collapse w-20 h-10  justify-center items-center text-center border-solid border border-white text-yellow-500 text-3xl">
-                {chiSoThaiDo}
-                {chiSoThaiDo > 9 ? "/" + convertInto1Digit(chiSoThaiDo) : null}
+                {chiSoThaiDo <= 9
+                  ? chiSoThaiDo
+                  : chiSoThaiDo > 9 && detectSpecialNumber(chiSoThaiDo)
+                  ? chiSoThaiDo + "/" + convertInto1Digit(chiSoThaiDo)
+                  : convertInto1Digit(chiSoThaiDo)}
               </td>
             </tr>
           </tbody>
@@ -391,23 +418,31 @@ export default function Home() {
                 <label className="text-2xl">2. Ngày sinh: </label>
               </div>
               <div className="text-center text-yellow-500 text-3xl">
-                {ngaySinh1So}
+                {ngaySinh1So <= 9
+                  ? ngaySinh1So
+                  : ngaySinh1So > 9 && detectSpecialNumber(ngaySinh1So)
+                  ? ngaySinh1So + "/" + convertInto1Digit(ngaySinh1So)
+                  : convertInto1Digit(ngaySinh1So)}
               </div>
               <div>
                 <label className="text-2xl">3. Tính cách:</label>
               </div>
               <div className="text-center text-yellow-500 text-3xl">
-                {chiSoTinhCach}
-                {chiSoTinhCach > 9
-                  ? "/" + convertInto1Digit(chiSoTinhCach)
-                  : null}
+                {chiSoTinhCach <= 9
+                  ? chiSoTinhCach
+                  : chiSoTinhCach > 9 && detectSpecialNumber(chiSoTinhCach)
+                  ? chiSoTinhCach + "/" + convertInto1Digit(chiSoTinhCach)
+                  : convertInto1Digit(chiSoTinhCach)}
               </div>
               <div>
                 <label className="text-2xl">4. Nội tâm:</label>
               </div>
               <div className="text-center text-yellow-500 text-3xl">
-                {chiSoNoiTam}
-                {chiSoNoiTam > 9 ? "/" + convertInto1Digit(chiSoNoiTam) : null}
+                {chiSoNoiTam <= 9
+                  ? chiSoNoiTam
+                  : chiSoNoiTam > 9 && detectSpecialNumber(chiSoNoiTam)
+                  ? chiSoNoiTam + "/" + convertInto1Digit(chiSoNoiTam)
+                  : convertInto1Digit(chiSoNoiTam)}
               </div>{" "}
             </div>
           </div>
@@ -629,24 +664,34 @@ export default function Home() {
               <label className="text-2xl">1. Thái độ:</label>
             </div>
             <div className=" text-yellow-500 text-3xl">
-              {chiSoThaiDo}
-              {chiSoThaiDo > 9 ? "/" + convertInto1Digit(chiSoThaiDo) : null}
+              {chiSoThaiDo <= 9
+                ? chiSoThaiDo
+                : chiSoThaiDo > 9 && detectSpecialNumber(chiSoThaiDo)
+                ? chiSoThaiDo + "/" + convertInto1Digit(chiSoThaiDo)
+                : convertInto1Digit(chiSoThaiDo)}
             </div>
             <div>
               <label className="text-2xl">2. Bản thể tiềm thức:</label>
             </div>
             <div className=" text-yellow-500 text-3xl">
-              {chiSoBanTheTiemThuc}
-              {chiSoBanTheTiemThuc > 9
-                ? "/" + convertInto1Digit(chiSoBanTheTiemThuc)
-                : null}
+              {chiSoBanTheTiemThuc <= 9
+                ? chiSoBanTheTiemThuc
+                : chiSoBanTheTiemThuc > 9 &&
+                  detectSpecialNumber(chiSoBanTheTiemThuc)
+                ? chiSoBanTheTiemThuc +
+                  "/" +
+                  convertInto1Digit(chiSoBanTheTiemThuc)
+                : convertInto1Digit(chiSoBanTheTiemThuc)}
             </div>
             <div>
               <label className="text-2xl">3. Cân bằng:</label>
             </div>
             <div className=" text-yellow-500 text-3xl">
-              {chiSoCanBang}
-              {chiSoCanBang > 9 ? "/" + convertInto1Digit(chiSoCanBang) : null}
+              {chiSoCanBang <= 9
+                ? chiSoCanBang
+                : chiSoCanBang > 9 && detectSpecialNumber(chiSoCanBang)
+                ? chiSoCanBang + "/" + convertInto1Digit(chiSoCanBang)
+                : convertInto1Digit(chiSoCanBang)}
             </div>
             <br />
           </div>
@@ -727,10 +772,15 @@ export default function Home() {
                 <div className="col-span-6 w-full  h-8 text-center"></div>
                 <div className="col-span-6 w-full h-auto text-center mb-8">
                   <label className="text-yellow-500 text-3xl">
-                    {thangSinh1So + namSinh1So}
-                    {detectSpecialNumber(thangSinh1So + namSinh1So)
-                      ? "/" + convertInto1Digit(thangSinh1So + namSinh1So)
-                      : null}
+                    {thangSinh1So + namSinh1So <= 9
+                      ? thangSinh1So + namSinh1So
+                      : thangSinh1So + namSinh1So > 9 &&
+                        detectSpecialNumberForPeak34(thangSinh1So + namSinh1So)
+                      ? thangSinh1So +
+                        namSinh1So +
+                        "/" +
+                        convertInto1Digit(thangSinh1So + namSinh1So)
+                      : convertInto1Digit(thangSinh1So + namSinh1So)}
                   </label>
                   <div className="w-full text-2xl">Đỉnh 4</div>
 
@@ -741,10 +791,25 @@ export default function Home() {
                 </div>
                 <div className="col-span-6 w-full h-20 justify-center flex-1 items-center text-center mb-12">
                   <div className="w-full text-yellow-500 text-3xl">
-                    {convertInto1Digit(
-                      convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                    {convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                      convertInto1Digit(namSinh1So + ngaySinh1So) <=
+                    9
+                      ? convertInto1Digit(thangSinh1So + ngaySinh1So) +
                         convertInto1Digit(namSinh1So + ngaySinh1So)
-                    )}
+                      : convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                          convertInto1Digit(namSinh1So + ngaySinh1So) >
+                          9 &&
+                        detectSpecialNumberForPeak34(
+                          convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                            convertInto1Digit(namSinh1So + ngaySinh1So)
+                        )
+                      ? convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                        convertInto1Digit(namSinh1So + ngaySinh1So) +
+                        "/" +
+                        convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                        convertInto1Digit(namSinh1So + ngaySinh1So)
+                      : convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                        convertInto1Digit(namSinh1So + ngaySinh1So)}
                   </div>
                   <div className="w-full text-2xl">Đỉnh 3</div>
                   <div className="w-full text-2xl">

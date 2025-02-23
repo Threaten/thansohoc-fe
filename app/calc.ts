@@ -62,14 +62,14 @@ const vowelCheck = (name: string) => {
     if (vowels.has(loweredName[i])) {
       vowelList.push(loweredName[i]);
     } else if (loweredName[i] === "y") {
-      // Check if y is between vowels
+      // Check if either neighboring letter is a vowel
       const prevIsVowel = i > 0 && vowels.has(loweredName[i - 1]);
       const nextIsVowel =
         i < loweredName.length - 1 && vowels.has(loweredName[i + 1]);
-      if (!prevIsVowel || !nextIsVowel) {
-        vowelList.push(loweredName[i]);
+      if (prevIsVowel || nextIsVowel) {
+        consonantList.push(loweredName[i]); // y is a consonant if next to vowel
       } else {
-        consonantList.push(loweredName[i]);
+        vowelList.push(loweredName[i]); // y is a vowel if not next to vowel
       }
     } else {
       if (loweredName[i] === " ") {
@@ -78,6 +78,7 @@ const vowelCheck = (name: string) => {
       consonantList.push(loweredName[i]);
     }
   }
+
   return { vowelList, consonantList };
 };
 
@@ -333,7 +334,6 @@ const tinhSoThang = (month: string) => {
 const tinhSoNam = (year: string) => {
   let tongNamSinh = 0;
   soNam = 0;
-  console.log("nam" + year);
 
   for (let i = 0; i < year.length; i++) {
     tongNamSinh += parseInt(year[i]);
@@ -491,8 +491,6 @@ export const tinhChiSoDamMeTiemAn = (props: Props) => {
   const duplicates = countMostDuplicateCharactersInName(props.fullName);
   const results: number[] = [];
 
-  console.log({ duplicates });
-
   duplicates.forEach(({ char }) => {
     const numberValue = characterToNumber(char) || 0;
     let product = numberValue;
@@ -535,7 +533,6 @@ export const tinhChiSoThaiDo = (props: Props) => {
 
 export const tinhChiSoBanTheTiemThuc = (props: Props) => {
   const result = timSoThieuVaSoYeu(props);
-  console.log(chiSoPhuongTienNhanThucTinhThan(props.fullName));
 
   return 9 - result.soThieu.length - result.soYeu.length;
 };
@@ -661,8 +658,6 @@ export const tinhNgaySinh1So = (props: Props) => {
   const month = tinhSoThang(props.monthOfBirth);
   const year = tinhSoNam(props.yearOfBirth);
 
-  console.log(date, month, year);
-
   return {
     date,
     month,
@@ -721,8 +716,6 @@ export const timSoLap = (props: Props) => {
       }
     }
   }
-
-  console.log(duplicates);
 
   return duplicates;
 };
