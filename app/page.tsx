@@ -791,11 +791,14 @@ export default function Home() {
                 </div>
                 <div className="col-span-6 w-full h-20 justify-center flex-1 items-center text-center mb-12">
                   <div className="w-full text-yellow-500 text-3xl">
-                    {convertInto1Digit(thangSinh1So + ngaySinh1So) +
-                      convertInto1Digit(namSinh1So + ngaySinh1So) <=
-                    9
-                      ? convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                    {convertInto1Digit(
+                      convertInto1Digit(thangSinh1So + ngaySinh1So) +
                         convertInto1Digit(namSinh1So + ngaySinh1So)
+                    ) <= 9
+                      ? convertInto1Digit(
+                          convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                            convertInto1Digit(namSinh1So + ngaySinh1So)
+                        )
                       : convertInto1Digit(thangSinh1So + ngaySinh1So) +
                           convertInto1Digit(namSinh1So + ngaySinh1So) >
                           9 &&
