@@ -878,28 +878,30 @@ export default function Home() {
                 </div>
                 <div className="col-span-3 w-full h-20 justify-center flex-1 items-center text-center">
                   <div className="w-full text-red-500 text-3xl">
-                    {Math.abs(ngaySinh1So - thangSinh1So)}
+                    {convertInto1Digit(Math.abs(ngaySinh1So - thangSinh1So))}
                   </div>
                   <div className="w-full text-2xl">Thử thách 1 </div>
                 </div>
                 <div className="col-span-3 w-full h-20 justify-center flex-1 items-center text-center">
                   <div className="w-full text-red-500 text-3xl">
-                    {Math.abs(ngaySinh1So - namSinh1So)}
+                    {convertInto1Digit(Math.abs(ngaySinh1So - namSinh1So))}
                   </div>
                   <div className="w-full text-2xl">Thử thách 2 </div>
                 </div>
                 <div className="col-span-6 w-full h-auto text-center mb-12">
                   <div className="w-full text-red-500 text-3xl">
-                    {Math.abs(
-                      Math.abs(ngaySinh1So - namSinh1So) -
-                        Math.abs(ngaySinh1So - thangSinh1So)
+                    {convertInto1Digit(
+                      Math.abs(
+                        Math.abs(ngaySinh1So - namSinh1So) -
+                          Math.abs(ngaySinh1So - thangSinh1So)
+                      )
                     )}
                   </div>
                   <div className="w-full text-2xl">Thử thách 3 </div>
                 </div>
                 <div className="col-span-6 w-full h-auto text-center mb-12">
                   <div className="w-full text-red-500 text-3xl">
-                    {Math.abs(thangSinh1So - namSinh1So)}
+                    {convertInto1Digit(Math.abs(thangSinh1So - namSinh1So))}
                   </div>
                   <div className="w-full text-2xl">Thử thách 4 </div>
                 </div>
