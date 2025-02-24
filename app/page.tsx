@@ -868,13 +868,13 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="col-span-2 w-full h-28  flex items-center justify-start font-bold text-3xl">
-                  {thangSinh1So}
+                  {convertInto1Digit(thangSinh1So)}
                 </div>
                 <div className="col-span-2 w-full h-28 justify-center flex items-center text-center font-bold text-3xl">
-                  {ngaySinh1So}
+                  {convertInto1Digit(ngaySinh1So)}
                 </div>
                 <div className="col-span-2 w-full h-28  flex items-center justify-end   font-bold text-3xl">
-                  {namSinh1So}
+                  {convertInto1Digit(namSinh1So)}
                 </div>
                 <div className="col-span-3 w-full h-20 justify-center flex-1 items-center text-center">
                   <div className="w-full text-red-500 text-3xl">
