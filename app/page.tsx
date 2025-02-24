@@ -63,6 +63,32 @@ export default function Home() {
     return result;
   };
 
+  const convertInto1DigitForPeak34 = (number: number) => {
+    let result = number;
+    while (result > 10) {
+      if (
+        result === 13 ||
+        result === 14 ||
+        result === 16 ||
+        result === 19 ||
+        result === 11 ||
+        result === 22 ||
+        result === 33 ||
+        result === 10
+      ) {
+        console.log(result);
+
+        return result;
+      } else {
+        result = String(result)
+          .split("")
+          .reduce((a, b) => a + parseInt(b), 0);
+      }
+    }
+
+    return result;
+  };
+
   const detectSpecialNumber = (number: number) => {
     if (
       number === 13 ||
@@ -775,9 +801,10 @@ export default function Home() {
                     {thangSinh1So + namSinh1So <= 9
                       ? thangSinh1So + namSinh1So
                       : thangSinh1So + namSinh1So > 9 &&
-                        detectSpecialNumberForPeak34(thangSinh1So + namSinh1So)
-                      ? thangSinh1So +
-                        namSinh1So +
+                        detectSpecialNumberForPeak34(
+                          convertInto1DigitForPeak34(thangSinh1So + namSinh1So)
+                        )
+                      ? convertInto1DigitForPeak34(thangSinh1So + namSinh1So) +
                         "/" +
                         convertInto1Digit(thangSinh1So + namSinh1So)
                       : convertInto1Digit(thangSinh1So + namSinh1So)}
