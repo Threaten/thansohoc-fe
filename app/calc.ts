@@ -579,13 +579,12 @@ export const tinhChiSoSuMenh = (props: Props) => {
     }
 
     if (wordSum > 9) {
-      if (![11, 22, 33, 13, 14, 16, 19].includes(wordSum)) {
-        while (wordSum > 9) {
-          wordSum = wordSum
-            .toString()
-            .split("")
-            .reduce((acc, digit) => acc + parseInt(digit), 0);
-        }
+      // if (![11, 22, 33, 13, 14, 16, 19].includes(wordSum)) {
+      while (wordSum > 9) {
+        wordSum = wordSum
+          .toString()
+          .split("")
+          .reduce((acc, digit) => acc + parseInt(digit), 0);
       }
     }
 
