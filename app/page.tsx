@@ -63,6 +63,31 @@ export default function Home() {
     return result;
   };
 
+  const convertInto1DigitKeepSpecialNumber = (number: number) => {
+    let result = number;
+    while (result >= 10) {
+      if (
+        result === 13 ||
+        result === 14 ||
+        result === 16 ||
+        result === 19 ||
+        result === 11 ||
+        result === 22 ||
+        result === 33
+      ) {
+        console.log(result);
+
+        return result;
+      } else {
+        result = String(result)
+          .split("")
+          .reduce((a, b) => a + parseInt(b), 0);
+      }
+    }
+
+    return result;
+  };
+
   const convertInto1DigitForPeak34 = (number: number) => {
     let result = number;
     while (result > 10) {
@@ -330,7 +355,7 @@ export default function Home() {
   };
 
   return (
-    <div className="">
+    <div className="bg-black">
       <div>
         <div className="grid grid-cols-2 w-[30%]">
           <label>Họ và Tên</label>
@@ -452,6 +477,7 @@ export default function Home() {
               </div>
               <div>
                 <label className="text-2xl">3. Tính cách:</label>
+                dmta {chiSoDamMeTiemAn}
               </div>
               <div className="text-center text-yellow-500 text-3xl">
                 {chiSoTinhCach <= 9
@@ -818,26 +844,31 @@ export default function Home() {
                 </div>
                 <div className="col-span-6 w-full h-20 justify-center flex-1 items-center text-center mb-12">
                   <div className="w-full text-yellow-500 text-3xl">
-                    {convertInto1Digit(
+                    {convertInto1DigitKeepSpecialNumber(
                       convertInto1Digit(thangSinh1So + ngaySinh1So) +
                         convertInto1Digit(namSinh1So + ngaySinh1So)
                     ) <= 9
-                      ? convertInto1Digit(
+                      ? convertInto1DigitKeepSpecialNumber(
                           convertInto1Digit(thangSinh1So + ngaySinh1So) +
                             convertInto1Digit(namSinh1So + ngaySinh1So)
                         )
-                      : convertInto1Digit(thangSinh1So + ngaySinh1So) +
-                          convertInto1Digit(namSinh1So + ngaySinh1So) >
-                          9 &&
+                      : convertInto1DigitKeepSpecialNumber(
+                          convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                            convertInto1Digit(namSinh1So + ngaySinh1So)
+                        ) > 9 &&
                         detectSpecialNumberForPeak34(
                           convertInto1Digit(thangSinh1So + ngaySinh1So) +
                             convertInto1Digit(namSinh1So + ngaySinh1So)
                         )
-                      ? convertInto1Digit(thangSinh1So + ngaySinh1So) +
-                        convertInto1Digit(namSinh1So + ngaySinh1So) +
+                      ? convertInto1DigitKeepSpecialNumber(
+                          convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                            convertInto1Digit(namSinh1So + ngaySinh1So)
+                        ) +
                         "/" +
-                        convertInto1Digit(thangSinh1So + ngaySinh1So) +
-                        convertInto1Digit(namSinh1So + ngaySinh1So)
+                        convertInto1Digit(
+                          convertInto1Digit(thangSinh1So + ngaySinh1So) +
+                            convertInto1Digit(namSinh1So + ngaySinh1So)
+                        )
                       : convertInto1Digit(thangSinh1So + ngaySinh1So) +
                         convertInto1Digit(namSinh1So + ngaySinh1So)}
                   </div>
@@ -849,7 +880,12 @@ export default function Home() {
                 </div>
                 <div className="col-span-3 w-full h-20 justify-center flex-1 items-center text-center">
                   <div className="w-full text-yellow-500 text-3xl">
-                    {convertInto1Digit(thangSinh1So + ngaySinh1So)}
+                    {convertInto1DigitKeepSpecialNumber(
+                      thangSinh1So + ngaySinh1So
+                    )}
+                    {detectSpecialNumber(thangSinh1So + ngaySinh1So)
+                      ? "/" + convertInto1Digit(thangSinh1So + ngaySinh1So)
+                      : null}
                   </div>
                   <div className="w-full text-2xl">Đỉnh 1</div>
                   <div className="w-full text-2xl">
@@ -859,7 +895,12 @@ export default function Home() {
                 </div>
                 <div className="col-span-3 w-full h-20 mt-4 justify-center flex-1 items-center text-center">
                   <div className="w-full text-yellow-500 text-3xl">
-                    {convertInto1Digit(namSinh1So + ngaySinh1So)}
+                    {convertInto1DigitKeepSpecialNumber(
+                      namSinh1So + ngaySinh1So
+                    )}
+                    {detectSpecialNumber(namSinh1So + ngaySinh1So)
+                      ? "/" + convertInto1Digit(namSinh1So + ngaySinh1So)
+                      : null}
                   </div>
                   <div className="w-full text-2xl">Đỉnh 2 </div>
                   <div className="w-full text-2xl">
@@ -871,10 +912,10 @@ export default function Home() {
                   {convertInto1Digit(thangSinh1So)}
                 </div>
                 <div className="col-span-2 w-full h-28 justify-center flex items-center text-center font-bold text-3xl">
-                  {convertInto1Digit(ngaySinh1So)}
+                  {convertInto1DigitKeepSpecialNumber(ngaySinh1So)}
                 </div>
                 <div className="col-span-2 w-full h-28  flex items-center justify-end   font-bold text-3xl">
-                  {convertInto1Digit(namSinh1So)}
+                  {convertInto1DigitKeepSpecialNumber(namSinh1So)}
                 </div>
                 <div className="col-span-3 w-full h-20 justify-center flex-1 items-center text-center">
                   <div className="w-full text-red-500 text-3xl">
