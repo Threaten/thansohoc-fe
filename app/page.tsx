@@ -355,7 +355,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-black">
+    <div className="bg-black text-white">
       <div>
         <div className="grid grid-cols-2 w-[30%]">
           <label>Họ và Tên</label>
