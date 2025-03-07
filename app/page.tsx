@@ -477,7 +477,6 @@ export default function Home() {
               </div>
               <div>
                 <label className="text-2xl">3. Tính cách:</label>
-                dmta {chiSoDamMeTiemAn}
               </div>
               <div className="text-center text-yellow-500 text-3xl">
                 {chiSoTinhCach <= 9
