@@ -488,26 +488,51 @@ export const tinhChiSoNoiTam = (props: Props) => {
 };
 
 export const tinhChiSoDamMeTiemAn = (props: Props) => {
-  const duplicates = countMostDuplicateCharactersInName(props.fullName);
+  // const duplicates = countMostDuplicateCharactersInName(props.fullName);
+  // const results: number[] = [];
+
+  // duplicates.forEach(({ char }) => {
+  //   const numberValue = characterToNumber(char) || 0;
+  //   let product = numberValue;
+
+  //   if (product > 9) {
+  //     if (![11, 22, 33, 13, 14, 16, 19].includes(product)) {
+  //       while (product > 9) {
+  //         product = product
+  //           .toString()
+  //           .split("")
+  //           .reduce((acc, digit) => acc + parseInt(digit), 0);
+  //       }
+  //     }
+  //   }
+
+  //   results.push(product);
+  // });
+
+  // return results;
+  const name_lower = props.fullName.toLowerCase().replace(/\s/g, "");
+  const counts = new Map<number, number>();
+
+  // Convert letters to numbers and count occurrences
+  for (const char of name_lower) {
+    const num = characterToNumber(char);
+    if (num) {
+      counts.set(num, (counts.get(num) || 0) + 1);
+    }
+  }
+
+  // Find max frequency
+  const maxCount = Math.max(...counts.values());
+
+  // Get all numbers that appear most frequently
   const results: number[] = [];
-
-  duplicates.forEach(({ char }) => {
-    const numberValue = characterToNumber(char) || 0;
-    let product = numberValue;
-
-    if (product > 9) {
-      if (![11, 22, 33, 13, 14, 16, 19].includes(product)) {
-        while (product > 9) {
-          product = product
-            .toString()
-            .split("")
-            .reduce((acc, digit) => acc + parseInt(digit), 0);
-        }
+  if (maxCount > 1) {
+    for (const [num, count] of counts.entries()) {
+      if (count === maxCount) {
+        results.push(num);
       }
     }
-
-    results.push(product);
-  });
+  }
 
   return results;
 };
